@@ -1,76 +1,102 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello DefaultController!{% endblock %}
-
-{% block head %}
-
+{% block title %}Hello DefaultController!
 {% endblock %}
 
+{% block head %}{% endblock %}
+
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+	<div class="example-wrapper">
+		<h1>Hello
+			{{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/private/var/www/ca/symfony4/project_1/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/private/var/www/ca/symfony4/project_1/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
-</div>
-
-
-<div>
-    <ul>
-    {% for user in users %}
-        <li>Name: {{user.name}}</li>
-        <li>Age: {{user.age}} - you won {{random_gift[loop.index0]}}</li>
-        <br>
-    {% endfor %}
-    </ul>
-</div>
-
-
-{# {% for message in app.flashes('notice') %}
-    <div>
-        {{message}}
-    </div>
-{% endfor %} #}
-
-
-{% for label, messages in app.flashes %}
-    {% for message in messages %}
-
-        <div class="flash-{{label}}">
-        {{message}}
-            </div>
-
-    {% endfor %}
-{% endfor %}
-
-<p> The google tracking code is: {{ga_code}} </p>
+		This friendly message is coming from:
+		<ul>
+			<li>Your controller at
+				<code>
+					<a href="{{ '/private/var/www/ca/symfony4/project_1/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a>
+				</code>
+			</li>
+			<li>Your template at
+				<code>
+					<a href="{{ '/private/var/www/ca/symfony4/project_1/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a>
+				</code>
+			</li>
+		</ul>
+	</div>
 
 
-<div>
-    {{app.user}} <br>
-    {{app.request.get('param')}} <br>
-    {{app.environment}} <br>
-    {# {{dump(app.session)}} #}
-    
-</div>
+	<div>
+		<ul>
+			{% for user in users %}
+				<li>Name:
+					{{user.name}}</li>
+				<li>Age:
+					{{user.age}}
+					- you won
+					{{random_gift[loop.index0]}}</li>
+				<br>
+			{% endfor %}
+		</ul>
+	</div>
 
 
-<p>
-    {{render(controller(
+	{# {% for message in app.flashes('notice') %}
+	    <div>
+	        {{message}}
+	    </div>
+	{% endfor %} #}
+
+
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+
+			<div class="flash-{{label}}">
+				{{message}}
+			</div>
+
+		{% endfor %}
+	{% endfor %}
+
+	<p>
+		The google tracking code is:
+		{{ga_code}}
+	</p>
+
+
+	<div>
+		{{app.user}}
+		<br>
+		{{app.request.get('param')}}
+		<br>
+		{{app.environment}}
+		<br>
+		{# {{dump(app.session)}} #}
+
+	</div>
+
+
+	<p>
+		{{render(controller(
         'App\\Controller\\DefaultController::mostPopularPosts',
         {'number': 5}
     ))}}
 
-</p>
-
+	</p>
 
 
 {% endblock %}
+{% block javascripts %}{% endblock %}
